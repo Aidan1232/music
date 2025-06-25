@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.player {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    transform: translateY(-24%) scale(1.15) translateX(35px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 6px; /* add some space for scrollbar */
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 16px 10px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0 12px 12px 0;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+    border-left: 4px solid transparent;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
+    transform-origin: left center;
+    position: relative;
+    z-index: 1;
+}
+
+li.hovered {
+    transform: scale(1.15) translateX(60%);
+    background: rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    z-index: 10;
+}
+
+li:hover ~ li {
+    transform: translateX(20%);
+}
+
+li.active {
+    border-left: 4px solid #0ff;
+    background: rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.6);
+}
+
+li .cd {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background:
+    radial-gradient(circle at center, #bbb 10%, #333 40%, #111 100%),
+    repeating-radial-gradient(
+        circle at center,
+        transparent 0px,
+        rgba(255,255,255,0.08) 1px,
+        transparent 2px,
+        rgba(255,255,255,0.03) 3px
+    );
+    border: 3px solid #0ff6;
+    animation: spin 5s linear infinite;
+    animation-play-state: paused;
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.3);
+}
+
+li.playing .cd {
+    animation-play-state: running;
+}
+
+.arm { 
+    position: absolute; 
+    top: 5px; 
+    left: 4px; 
+    width: 40px; 
+    height: 6px; 
+    background: #ccc; 
+    border-radius: 3px; 
+    transform-origin: left center; 
+    transform: rotate(-30deg); 
+    transition: transform 0.5s ease; 
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.3); 
+    z-index: 2; 
+} 
+
+li.playing .arm { 
+    transform: rotate(15deg); 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#controls {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#playPause {
+    font-size: 1.4rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #0ff4;
+    color: black;
+}
+
+#playPause:hover {
+    background: #0ff8;
+}
+
+.volume-control {
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#volumeSlider {
+    position: absolute;
+    left: 50%;
+    bottom: -40%;
+    transform: translateX(-50%);
+    width: 80px;
+    display: block;
+    appearance: none;
+    background: #0ff4;
+    height: 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #0ff6;
+}
+
+.cd-art {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    object-fit: cover;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#progressContainer {
+  width: 300px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: hsl(180, 100%, 50%);
+  border-radius: 6px;
+  transition: background-color 0.2s ease-out;
+}

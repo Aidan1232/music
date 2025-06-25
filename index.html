@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Song Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="visualizer"></canvas>
+
+  <ul id="playlist">
+
+
+<li data-src="/songs/themchanges.mp3">
+<span class="arm"></span>
+<br>
+<span class="cd">
+  <img src="/albums/album1.jpg" class="cd-art" />
+</span>
+<span>Thunder cat - Them Changes</span>
+</li>
+
+<li data-src="/songs/sugar.mp3">
+<span class="arm"></span>
+<br>
+<span class="cd">
+  <img src="/albums/album2.jpg" class="cd-art" />
+</span>
+<span>Robin Schulz - Sugar</span>
+</li>
+
+<li data-src="/songs/butterfly.mp3">
+<span class="arm"></span>
+<br>
+<span class="cd">
+  <img src="/albums/album3.jpg" class="cd-art" />
+</span>
+<span>Crazy Town - Butterfly</span>
+</li>
+
+<li data-src="/songs/smaa.mp3">
+<span class="arm"></span>
+<br>
+<span class="cd">
+  <img src="/albums/album4.jpg" class="cd-art" />
+</span>
+<span>Real Life - Send Me An Angel</span>
+</li>
+
+<li data-src="/songs/dare.mp3">
+<span class="arm"></span>
+<br>
+<span class="cd">
+  <img src="/albums/album5.jpg" class="cd-art" />
+</span>
+<span>Gorillaz - DARE</span>
+</li>
+
+  </ul>
+  <div>This is a website showing the power of css/js/html can do to music and audio translation</div>
+  <div class="player">
+    <div id="controls">
+      <button id="playPause">▶️</button>
+      <span id="trackTitle">No track loaded</span>
+    </div>
+    <br>
+    <span id="timeDisplay">0:00 / --:--</span>
+    <div id="progressContainer">
+      <div id="progressBar"></div>
+    </div>
+    <br>
+    <label style="user-select: none;">
+      <input type="checkbox" id="toggleVisualizer" checked />
+      Show Visualizer
+    </label>
+    <br>
+    <div class="volume-control">
+      🔊
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+    </div>
+  </div>
+
+  <audio id="audio" preload="auto"></audio>
+  <script src="scripts.js"></script>
+</body>
+</html>
